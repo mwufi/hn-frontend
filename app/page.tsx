@@ -41,20 +41,21 @@ export default async function Home() {
   const articles = await getHNArticles()
 
   return (
-    <main className="font-sans antialiased">
-      <div className="container mx-auto max-w-screen-lg">
-        <div className="flex bg-orange-400 space-x-2 p-2 px-4">
-          <Link className="font-bold" href={"/"}>Hacker News</Link>
-          {hackerNewsMenu.map(item => (
-            <Link href={item.href}>{item.text}</Link>
-          ))}
+    <main>
+      <nav className="flex bg-orange-400 p-2 px-4">
+        <Link className="font-bold mr-2" href={"/"}>Hacker News</Link>
+        {hackerNewsMenu.map(item => (
+          <Link href={item.href} className="mr-2">{item.text}</Link>
+        ))}
+        <div className="ml-auto">
+          <Link href={"/login"}>Login</Link>
         </div>
-        <section id="articles" className="space-y-2 bg-[#f6f6ef] p-4 px-4">
-          {articles?.map((item, index) => (
-            <NewItem item={item} index={index + 1} />
-          ))}
-        </section>
-      </div>
+      </nav>
+      <section id="articles" className="space-y-2 bg-[#f6f6ef] p-4 px-4">
+        {articles?.map((item, index) => (
+          <NewItem item={item} index={index + 1} />
+        ))}
+      </section>
     </main>
   );
 }
