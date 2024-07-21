@@ -5,8 +5,13 @@ import Link from "next/link";
 
 
 function getRootDomainFromUrl(url) {
-    const d = new URL(url);
-    return d.hostname;
+    try {
+        const d = new URL(url);
+        return d.hostname;
+    } catch {
+        console.log("parse url failed", url)
+        return url || "example.com"
+    }
 }
 
 function formatDistanceToNow(datetime) {
@@ -35,6 +40,10 @@ function formatDistanceToNow(datetime) {
 }
 
 function NewItem({ item, index }) {
+    const itemUrl = item.url ? item.url : (
+        item.id ? `/item?id=${item.id}` : undefined
+    )
+
     return (
         (
             <div key={item.id} className="flex items-start">
@@ -44,8 +53,15 @@ function NewItem({ item, index }) {
                 </button>
                 <div>
                     <div className="space-x-1">
-                        <Link href={item.url} className="text-gray-800">{item.title}</Link>
-                        <Link href={item.url} className="text-gray-300 text-sm hover:underline">({getRootDomainFromUrl(item.url)})</Link>
+                        {itemUrl ? (
+                            <>
+                                <Link href={itemUrl} className="text-gray-800">{item.title}</Link>
+                                <Link href={itemUrl} className="text-gray-300 text-sm hover:underline">({getRootDomainFromUrl(itemUrl)})</Link>
+                            </>
+
+                        ) : (
+                            <p className="text-gray-800">{item.title}</p>
+                        )}
                     </div>
                     <div className="text-sm text-gray-400">
                         <span>{item.score} points</span> by <Link href={`/user/${item.by}`}>{item.by}</Link>

@@ -1,5 +1,5 @@
 
-import NewItem from "../components/NewItem";
+import NewItem from "@/components/NewItem";
 
 async function getHNArticles() {
   // Fetch data from external API
@@ -19,7 +19,7 @@ export default async function Home() {
 
   return (
     <main>
-      <section id="articles" className="space-y-2 p-4">
+      <section id="articles" className="space-y-2 bg-[#f6f6ef] p-4 px-4">
         {articles?.map((item, index) => (
           <NewItem item={item} index={index + 1} />
         ))}
