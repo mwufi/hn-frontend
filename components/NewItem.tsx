@@ -41,7 +41,7 @@ function NewItem({ item, index }) {
                         )}
                     </div>
                     <div className="text-sm text-gray-400">
-                        <span>{item.score} points</span> by <Link href={`/user/${item.by}`}>{item.by}</Link>
+                        <span>{item.score} points</span> by <Link href={`/user/${item.by}`}>{item.by}</Link> {' '}
                         <span>{formatDistanceToNow(new Date(item.time * 1000))}</span> {' '}
                         | <Link href={`/hide/${item.id}`}>hide</Link> {' '}
                         | <Link href={`/item?id=${item.id}`}>{item.descendants} comments</Link>
