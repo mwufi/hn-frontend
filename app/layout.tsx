@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 const hackerNewsMenu = [
   { text: "New", href: "/new" },
   { text: "Past", href: "/past" },
+  { text: "Most Discussed", href: "/best" },
   { text: "Comments", href: "/comments" },
   { text: "Ask", href: "/ask" },
   { text: "Show", href: "/show" },

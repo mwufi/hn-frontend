@@ -3,7 +3,7 @@ import NewItem from "@/components/NewItem";
 
 async function getHNArticles() {
   // Fetch data from external API
-  const response = await fetch('https://hacker-news.firebaseio.com/v0/newstories.json');
+  const response = await fetch('https://hacker-news.firebaseio.com/v0/beststories.json');
   const data = await response.json();
   const articleDetails = await Promise.all(data.slice(0, 20).map(async (id) => {
     const articleResponse = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
