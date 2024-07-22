@@ -13,7 +13,7 @@ function Comment({ comment, index }) {
                 <div className="text-xs text-gray-500 mb-1">
                     Posted by <a href={`/user/${comment.by}`} className=" hover:underline">{comment.by}</a> {formatDistanceToNow(new Date(comment.time * 1000))}
                 </div>
-                <div className="text-gray-600" dangerouslySetInnerHTML={{ __html: comment.text }}></div>
+                {comment.text && <div className="text-gray-600" dangerouslySetInnerHTML={{ __html: comment.text }}></div>}
             </div>
         </div>
     );
