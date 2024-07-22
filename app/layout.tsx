@@ -36,7 +36,7 @@ export default function RootLayout({
             <div className="divide-x-[1.5px] divide-solid divide-gray-800">
 
               {hackerNewsMenu.map(item => (
-                <Link href={item.href} className="px-2 ">{item.text}</Link>
+                <Link key={item.href} href={item.href} className="px-2 ">{item.text}</Link>
               ))}
             </div>
             <div className="ml-auto">

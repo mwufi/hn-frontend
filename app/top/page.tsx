@@ -21,7 +21,7 @@ export default async function Home() {
     <main>
       <section id="articles" className="space-y-2 bg-[#f6f6ef] p-4 px-4">
         {articles?.map((item, index) => (
-          <NewItem item={item} index={index + 1} />
+          <NewItem key={item.id} item={item} index={index + 1} />
         ))}
       </section>
     </main>
