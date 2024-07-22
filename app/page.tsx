@@ -1,4 +1,5 @@
 
+import InstagramProfile from "@/components/InstagramProfile";
 import NewItem from "../components/NewItem";
 
 async function getHNArticles() {
@@ -24,6 +25,7 @@ export default async function Home() {
           <NewItem key={item.id} item={item} index={index + 1} />
         ))}
       </section>
+      <InstagramProfile />
     </main>
   );
 }
