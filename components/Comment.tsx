@@ -3,7 +3,7 @@ import { formatDistanceToNow } from "@/components/formatTime";
 
 function Comment({ comment, index }) {
     return (
-        <div className="flex items-start p-4">
+        <div className="flex items-start">
             <button className="mt-2 mr-2">
                 <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
                     <path d="M12 8l-6 6h12l-6-6z"></path>

@@ -20,7 +20,6 @@ async function getAskItem(id) {
 }
 
 
-
 export default async function Page({ searchParams }) {
     const { id } = searchParams;
     const item = await getAskItem(id)
@@ -33,9 +32,12 @@ export default async function Page({ searchParams }) {
                 <div className="p-2 px-4 text-lg" dangerouslySetInnerHTML={{ __html: item.text }}></div>
             }
 
-            {item.kidsDetails && item.kidsDetails.map((kidDetail, index) => (
-                <Comment key={index} comment={kidDetail} index={index + 1} />
-            ))}
+            <div className="space-y-2 m-4">
+                {item.kidsDetails ? item.kidsDetails.map((kidDetail, index) => (
+                    <Comment key={index} comment={kidDetail} index={index + 1} />
+                )) : "No comments so far!"}
+            </div>
+
         </main>
     )
 }
