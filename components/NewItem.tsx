@@ -2,6 +2,7 @@
 
 import { ArrowUpIcon } from "lucide-react";
 import Link from "next/link";
+import { formatDistanceToNow } from "@/components/formatTime";
 
 
 function getRootDomainFromUrl(url) {
@@ -14,30 +15,6 @@ function getRootDomainFromUrl(url) {
     }
 }
 
-function formatDistanceToNow(datetime) {
-    const current = new Date();
-    const previous = new Date(datetime);
-    const seconds = Math.floor((current.getTime() - previous.getTime()) / 1000);
-    const minutes = Math.floor(seconds / 60);
-    const hours = Math.floor(minutes / 60);
-    const days = Math.floor(hours / 24);
-    const months = Math.floor(days / 30);
-    const years = Math.floor(months / 12);
-
-    if (seconds < 60) {
-        return 'just now';
-    } else if (minutes < 60) {
-        return `${minutes} minutes ago`;
-    } else if (hours < 24) {
-        return `${hours} hours ago`;
-    } else if (days < 30) {
-        return `${days} days ago`;
-    } else if (months < 12) {
-        return `${months} months ago`;
-    } else {
-        return `${years} years ago`;
-    }
-}
 
 function NewItem({ item, index }) {
     const itemUrl = item.url ? item.url : (
@@ -67,7 +44,7 @@ function NewItem({ item, index }) {
                         <span>{item.score} points</span> by <Link href={`/user/${item.by}`}>{item.by}</Link>
                         <span>{formatDistanceToNow(new Date(item.time * 1000))}</span> {' '}
                         | <Link href={`/hide/${item.id}`}>hide</Link> {' '}
-                        | <Link href={`/comments/${item.id}`}>{item.descendants} comments</Link>
+                        | <Link href={`/item?id=${item.id}`}>{item.descendants} comments</Link>
                     </div>
                 </div>
             </div>

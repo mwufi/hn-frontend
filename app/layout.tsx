@@ -28,13 +28,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
-        <div className="container mx-auto max-w-screen-lg bg-[#f6f6ef]">
-          <nav className="flex bg-orange-400 p-2 px-4">
-            <Link className="font-bold mr-2" href={"/"}>Hacker News</Link>
-            {hackerNewsMenu.map(item => (
-              <Link href={item.href} className="mr-2">{item.text}</Link>
-            ))}
+      <body className="font-sans">
+        <div className="container mx-auto bg-[#f6f6ef] pt-2">
+          <nav className="flex bg-orange-400 p-1">
+            <Link className="font-bold px-2 " href={"/"}>Hacker News</Link>
+            <div className="divide-x-[1.5px] divide-solid divide-gray-800">
+
+              {hackerNewsMenu.map(item => (
+                <Link href={item.href} className="px-2 ">{item.text}</Link>
+              ))}
+            </div>
             <div className="ml-auto">
               <Link href={"/login"}>Login</Link>
             </div>
